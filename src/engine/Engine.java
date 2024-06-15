@@ -2,15 +2,15 @@ package engine;
 
 import engine.render.WindowFrame;
 
-public class Engine implements Runnable {
+public class Engine {
 
     private final Thread engineThread;
+    private final WindowFrame window;
 
     private boolean running = false;
-    private WindowFrame window;
 
     public Engine(WindowFrame window) {
-        engineThread = new Thread(this);
+        engineThread = new Thread(this::Run);
         this.window = window;
     }
 
@@ -25,8 +25,9 @@ public class Engine implements Runnable {
         engineThread.interrupt();
     }
 
-    @Override
-    public void run() {
+    public WindowFrame GetInstance() { return window; }
+
+    private void Run() {
         running = true;
 
         long lastTime = System.nanoTime(), timer = System.currentTimeMillis();

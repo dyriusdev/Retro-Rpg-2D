@@ -23,6 +23,16 @@ public class MainRender extends JPanel {
         g2d.dispose();
     }
 
+    public void Prepare() {
+
+    }
+
+    /*
+    Draw a grid on the window and each tile on grid follow this formula :
+    - OTile => 16 | Scale => 3
+    - TileSize = OTile * Scale => 48
+    With this all grid tiles is (48, 48)
+    */
     private void DrawGrid(Graphics2D g) {
         g.setColor(Color.RED);
         for (int x = 0; x < Globals.SCREEN_WIDTH; x += Globals.TILE_SIZE) {

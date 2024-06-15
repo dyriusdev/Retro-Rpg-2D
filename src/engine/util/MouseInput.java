@@ -2,19 +2,8 @@ package engine.util;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
-public class Mouse implements MouseListener, MouseMotionListener {
-
-    // Motion
-
-    @Override
-    public void mouseDragged(MouseEvent e) {}
-
-    @Override
-    public void mouseMoved(MouseEvent e) {}
-
-    // Mouse
+public class MouseInput implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {}
