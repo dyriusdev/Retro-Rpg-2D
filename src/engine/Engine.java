@@ -43,8 +43,10 @@ public class Engine implements Runnable {
                 delta--;
             }
 
-            try { Thread.sleep(2); }
-            catch (InterruptedException e) { System.err.println(e.getMessage()); }
+            synchronized (this) {
+                try { wait(2); }
+                catch (InterruptedException e) { System.err.println(e.getMessage()); }
+            }
 
             Render();
             frames++;

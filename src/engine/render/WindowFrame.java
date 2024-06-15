@@ -10,6 +10,7 @@ public class WindowFrame extends JFrame {
     private final MainRender render = new MainRender();
 
     public WindowFrame() {
+        setTitle(Globals.TITLE);
         setMinimumSize(new Dimension(Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT));
         setMaximumSize(new Dimension(Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT));
         setPreferredSize(new Dimension(Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT));
