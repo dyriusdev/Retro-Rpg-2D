@@ -1,13 +1,17 @@
 package engine;
 
-public class Engine {
+import engine.render.WindowFrame;
+
+public class Engine implements Runnable {
 
     private final Thread engineThread;
 
     private boolean running = false;
+    private WindowFrame window;
 
-    public Engine() {
-        engineThread = new Thread(this::Run);
+    public Engine(WindowFrame window) {
+        engineThread = new Thread(this);
+        this.window = window;
     }
 
     public void Start() {
@@ -21,7 +25,8 @@ public class Engine {
         engineThread.interrupt();
     }
 
-    private void Run() {
+    @Override
+    public void run() {
         running = true;
 
         long lastTime = System.nanoTime(), timer = System.currentTimeMillis();
@@ -38,7 +43,7 @@ public class Engine {
                 delta--;
             }
 
-            try { engineThread.wait(2); }
+            try { Thread.sleep(2); }
             catch (InterruptedException e) { System.err.println(e.getMessage()); }
 
             Render();
@@ -53,7 +58,11 @@ public class Engine {
         }
     }
 
-    private void Update(double delta) {}
+    private void Update(double delta) {
+        window.Update(delta);
+    }
 
-    public void Render() {}
+    public void Render() {
+        window.Render();
+    }
 }
