@@ -1,6 +1,8 @@
 package engine.render;
 
 import engine.Globals;
+import engine.manager.ResourceManager;
+import engine.render.texture.SpriteSheet;
 
 import javax.swing.*;
 import java.awt.*;
