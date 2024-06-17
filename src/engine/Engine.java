@@ -1,6 +1,6 @@
 package engine;
 
-import engine.render.WindowFrame;
+import engine.gfx.WindowFrame;
 
 public class Engine {
 

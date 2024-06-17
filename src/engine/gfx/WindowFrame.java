@@ -1,15 +1,14 @@
-package engine.render;
+package engine.gfx;
 
 import engine.Globals;
 import engine.manager.InputManager;
-import engine.manager.RenderManager;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class WindowFrame extends JFrame {
 
-    private final RenderManager render = new RenderManager();
+    private final RenderEngine renderer;
     private final InputManager input = new InputManager();
 
     public WindowFrame() {
@@ -25,7 +24,9 @@ public class WindowFrame extends JFrame {
         addMouseListener(input.GetMouse());
         addMouseMotionListener(input.GetMouseMotion());
 
-        add(render.GetMainRender());
+        renderer = new RenderEngine(Color.BLACK);
+        renderer.Initialize();
+        add(renderer);
         pack();
 
         setLocationRelativeTo(null);
@@ -33,11 +34,9 @@ public class WindowFrame extends JFrame {
     }
 
     public void Update(double delta) {
+        renderer.Update(delta);
         input.Update(delta);
     }
 
-    public void Render() {
-        render.Prepare();
-        repaint();
-    }
+    public void Render() { repaint(); }
 }
